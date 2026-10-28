@@ -1,0 +1,44 @@
+@startuml
+skinparam dpi 170
+skinparam shadowing false
+skinparam object {
+  BackgroundColor #FFFFFF
+  BorderColor #1b2a41
+}
+object "teacherA : Teacher" as t {
+  id = 7
+  name = "Teacher A"
+}
+object "se : Course" as c {
+  code = "SE"
+  title = "Software Engineering"
+  minPercent = 60
+}
+object "ses1021 : ClassSession" as s {
+  id = 1021
+  date = 2026-10-28
+  classNo = 21
+  duration = 2
+  status = "Held"
+}
+object "rec5001 : AttendanceRecord" as r1 {
+  status = "Present"
+}
+object "rec5002 : AttendanceRecord" as r2 {
+  status = "Absent"
+}
+object "stu1 : Student" as a {
+  roll = "IT24001"
+  name = "Student A"
+}
+object "stu2 : Student" as b {
+  roll = "IT24002"
+  name = "Student B"
+}
+t --> c : teaches
+c --> s : has
+s --> r1 : contains
+s --> r2 : contains
+a --> r1 : has
+b --> r2 : has
+@enduml

@@ -1,0 +1,61 @@
+@startuml
+skinparam dpi 170
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam usecase {
+  BackgroundColor #FFFFFF
+  BorderColor #1b2a41
+}
+skinparam rectangle {
+  BackgroundColor #F7F8FA
+  BorderColor #1b2a41
+}
+left to right direction
+actor Teacher
+actor Student
+actor Admin
+rectangle "UniAttend System" {
+  usecase "Sign in with email\nand password" as UC0
+  usecase "Take attendance" as UC1
+  usecase "Edit attendance" as UC2
+  usecase "Write audit log" as UC3
+  usecase "View history and reports" as UC4
+  usecase "Export CSV" as UC5
+  usecase "Create course join link" as UC6
+  usecase "View own attendance" as UC7
+  usecase "See low attendance warning" as UC8
+  usecase "Join course with university email,\nnickname and password" as UC9
+  usecase "Set class duration\n(1 to 5 hours)" as UC13
+  usecase "View student details" as UC14
+  usecase "Reset forgotten\npassword" as UC15
+  usecase "Use keyboard shortcuts\n(desktop)" as UC16
+  usecase "Manage university\ndirectory (demo)" as UC17
+  usecase "Manage users" as UC10
+  usecase "Manage courses\nand enrollment" as UC11
+  usecase "View department report" as UC12
+}
+Teacher --> UC1
+Teacher --> UC2
+Teacher --> UC4
+Teacher --> UC5
+Teacher --> UC6
+Teacher --> UC14
+Student --> UC7
+Student --> UC9
+Admin --> UC10
+Admin --> UC11
+Admin --> UC12
+Admin --> UC17
+Teacher --> UC15
+Student --> UC15
+Admin --> UC15
+UC1 ..> UC0 : <<include>>
+UC16 ..> UC1 : <<extend>>
+UC1 ..> UC13 : <<include>>
+UC4 ..> UC0 : <<include>>
+UC7 ..> UC0 : <<include>>
+UC10 ..> UC0 : <<include>>
+UC2 ..> UC3 : <<include>>
+UC8 ..> UC7 : <<extend>>
+UC5 ..> UC4 : <<extend>>
+@enduml
